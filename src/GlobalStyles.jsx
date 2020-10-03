@@ -43,7 +43,7 @@ html, body, #root {
 
 .circle {
   fill: none;
-  stroke: #fba919;
+  stroke: #FBA919;
   stroke-width: 20;
   stroke-miterlimit: 10;
   stroke-dasharray: 126;
@@ -93,7 +93,7 @@ html, body, #root {
 }
 .gameBoard--exit-active {
   transform: rotateY(90deg);
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.7s 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .gameBoard--exit-done {
 }
@@ -115,6 +115,37 @@ html, body, #root {
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .winnerCard--exit-done {
+}
+
+.x--enter .line-1{ 
+  stroke-dashoffset: 45; 
+}
+.x--enter-active .line-1{ 
+  stroke-dashoffset: 0; 
+  transition: stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1); 
+}
+.x--enter-done .line-1{
+}
+
+.x--enter .line-2{ 
+  stroke-dashoffset: 45; 
+}
+.x--enter-active .line-2{ 
+  stroke-dashoffset: 0; 
+  transition: stroke-dashoffset 0.35s 0.35s cubic-bezier(0.22, 1, 0.36, 1); 
+}
+.x--enter-done .line-2{
+}
+
+.o--enter { 
+  stroke-dashoffset: 126; 
+}
+.o--enter-active { 
+  stroke-dashoffset: 0; 
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.85, 0, 0.15, 1); 
+}
+.o--enter-done { 
+  stroke-dashoffset: 0; 
 }
 
 .shape-x-o {

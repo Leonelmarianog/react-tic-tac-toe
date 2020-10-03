@@ -2,7 +2,6 @@ import React from "react";
 
 const PlayerX = () => (
   <svg
-    name="x"
     className="shape-x-o"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -12,8 +11,8 @@ const PlayerX = () => (
     style={{ enableBackground: "new 0 0 51.6 51.6" }}
     xmlSpace="preserve"
   >
-    <line className="line" x1="10.4" y1="10" x2="41.2" y2="41.6" />
-    <line className="line" x1="41.6" y1="10.4" x2="10" y2="41.2" />
+    <line className="line line-1" x1="10.4" y1="10" x2="41.2" y2="41.6" />
+    <line className="line line-2" x1="41.6" y1="10.4" x2="10" y2="41.2" />
   </svg>
 );
 

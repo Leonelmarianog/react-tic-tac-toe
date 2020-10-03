@@ -126,7 +126,7 @@ export default class App extends React.Component {
         </CSSTransition>
         <CSSTransition
           in={this.state.gameBoard}
-          timeout={{ enter: 700, exit: 700 }}
+          timeout={{ enter: 700, exit: 1500 }}
           classNames={"gameBoard-"}
           mountOnEnter={true}
           unmountOnExit={true}
