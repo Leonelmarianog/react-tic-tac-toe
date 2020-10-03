@@ -29,11 +29,16 @@ const BoardBackground = styled.div`
   }
 `;
 
-const GameBoard = ({ tiles }) => {
+const GameBoard = ({ tiles, handleSetTile }) => {
   return (
     <BoardBackground>
-      {tiles.map((tile) => (
-        <Tile player={tile} />
+      {tiles.map((tile, index) => (
+        <Tile
+          key={`tile-${index + 1}`}
+          index={index}
+          shape={tile}
+          handleSetTile={handleSetTile}
+        />
       ))}
     </BoardBackground>
   );

@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Secular One', sans-serif;
 }
 
 html, body, #root {
@@ -59,6 +60,16 @@ html, body, #root {
 .menu--appear-done {
 }
 
+.menu--enter {
+  transform: rotateY(90deg);
+}
+.menu--enter-active {
+  transform: rotateY(0);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.menu--enter-done {
+}
+
 .menu--exit {
 }
 .menu--exit-active {
@@ -78,6 +89,37 @@ html, body, #root {
 .gameBoard--enter-done {
 }
 
+.gameBoard--exit {
+}
+.gameBoard--exit-active {
+  transform: rotateY(90deg);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gameBoard--exit-done {
+}
+
+.winnerCard--enter {
+  transform: rotateY(90deg);
+}
+.winnerCard--enter-active {
+  transform: rotateY(0);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.winnerCard--enter-done {
+}
+
+.winnerCard--exit {
+}
+.winnerCard--exit-active {
+  transform: rotateY(90deg);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.winnerCard--exit-done {
+}
+
+.shape-x-o {
+  width: 50%;
+}
 `;
 
 export default GlobalStyles;

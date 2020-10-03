@@ -3,8 +3,7 @@ import React from "react";
 const PlayerX = () => (
   <svg
     name="x"
-    onClick={this.handleClick}
-    className="playerX"
+    className="shape-x-o"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     x="0px"
