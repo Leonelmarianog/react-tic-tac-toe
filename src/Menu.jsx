@@ -42,14 +42,15 @@ export default class Menu extends React.Component {
   }
 
   render() {
+    const { bounceX, bounceO, buttonsDisabled } = this.state;
     return (
       <MenuBackground>
         <PlayerSelectButton
           id="x"
           onClick={() => this.setState({ bounceX: 1, buttonsDisabled: 1 })}
           onAnimationEnd={this.handleClick}
-          isDisabled={this.state.buttonsDisabled}
-          isAnimated={this.state.bounceX}
+          isDisabled={buttonsDisabled}
+          isAnimated={bounceX}
         >
           <PlayerX isButton={true} />
         </PlayerSelectButton>
@@ -57,8 +58,8 @@ export default class Menu extends React.Component {
           id="o"
           onClick={() => this.setState({ bounceO: 1, buttonsDisabled: 1 })}
           onAnimationEnd={this.handleClick}
-          isDisabled={this.state.buttonsDisabled}
-          isAnimated={this.state.bounceO}
+          isDisabled={buttonsDisabled}
+          isAnimated={bounceO}
         >
           <PlayerO isButton={true} />
         </PlayerSelectButton>

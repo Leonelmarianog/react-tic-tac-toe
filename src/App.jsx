@@ -106,11 +106,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { menu, gameBoard, tiles, winner, winnerCard } = this.state;
     return (
       <React.Fragment>
         <GlobalStyles />
         <CSSTransition
-          in={this.state.menu}
+          in={menu}
           timeout={{
             appear: 700,
             enter: 700,
@@ -124,7 +125,7 @@ export default class App extends React.Component {
           <Menu handleSelection={this.handleSelection} />
         </CSSTransition>
         <CSSTransition
-          in={this.state.gameBoard}
+          in={gameBoard}
           timeout={{ enter: 700, exit: 1500 }}
           classNames={"gameBoard-"}
           mountOnEnter={true}
@@ -132,13 +133,13 @@ export default class App extends React.Component {
           onExited={() => this.setState({ winnerCard: true })}
         >
           <GameBoard
-            tiles={this.state.tiles}
+            tiles={tiles}
             handleSetTile={this.handleSetTile}
-            winner={this.state.winner}
+            winner={winner}
           />
         </CSSTransition>
         <CSSTransition
-          in={this.state.winnerCard}
+          in={winnerCard}
           timeout={{ enter: 700, exit: 1200 }}
           classNames={"winnerCard-"}
           mountOnEnter={true}
@@ -146,9 +147,9 @@ export default class App extends React.Component {
           onExited={() => this.setState({ menu: true, winner: null })}
         >
           <WinnerCard
-            winner={this.state.winner}
+            winner={winner}
             handleRestartGame={this.handleRestartGame}
-            winnerCard={this.state.winnerCard}
+            winnerCard={winnerCard}
           />
         </CSSTransition>
       </React.Fragment>
