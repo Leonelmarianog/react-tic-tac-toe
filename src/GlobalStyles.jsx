@@ -45,7 +45,7 @@ html, body, #root {
 }
 .menu--exit-active {
   transform: rotateY(90deg);
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .menu--exit-done {
 }
@@ -93,7 +93,7 @@ html, body, #root {
 }
 .shape-x--enter-active .line-1{ 
   stroke-dashoffset: 0; 
-  transition: stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1); 
+  transition: stroke-dashoffset 0.35s cubic-bezier(0.22, 1, 0.36, 1); 
 }
 .shape-x--enter-done .line-1{
 }

@@ -114,7 +114,7 @@ export default class App extends React.Component {
           timeout={{
             appear: 700,
             enter: 700,
-            exit: 700,
+            exit: 900,
           }}
           classNames={"menu-"}
           unmountOnExit={true}
