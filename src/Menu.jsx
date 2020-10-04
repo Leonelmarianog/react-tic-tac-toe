@@ -14,7 +14,7 @@ const MenuBackground = styled.div`
 export default class Menu extends React.Component {
   constructor() {
     super();
-    this.state = { bounceX: false, bounceO: false };
+    this.state = { bounceX: 0, bounceO: 0 };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
       <MenuBackground>
         <svg
           id="x"
-          onClick={() => this.setState({ bounceX: true })}
+          onClick={() => this.setState({ bounceX: 1 })}
           className={`button-x ${this.state.bounceX ? "click-disabled" : ""} ${
             this.state.bounceX ? "bounce" : ""
           }`}
@@ -47,7 +47,7 @@ export default class Menu extends React.Component {
         </svg>
         <svg
           id="o"
-          onClick={() => this.setState({ bounceO: true })}
+          onClick={() => this.setState({ bounceO: 1 })}
           className={`button-o ${this.state.bounceO ? "click-disabled" : ""} ${
             this.state.bounceO ? "bounce" : ""
           }`}
