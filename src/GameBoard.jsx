@@ -30,6 +30,19 @@ const BoardBackground = styled.div`
   & div:nth-child(9) {
     border-bottom-right-radius: 20px;
   }
+
+  &.gameBoard--enter {
+    transform: rotateY(90deg);
+  }
+  &.gameBoard--enter-active {
+    transform: rotateY(0);
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &.gameBoard--exit-active {
+    transform: rotateY(90deg);
+    transition: transform 0.7s 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 `;
 
 const GameBoard = ({ tiles, handleSetTile, winner }) => {

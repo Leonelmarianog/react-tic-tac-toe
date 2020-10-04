@@ -12,6 +12,27 @@ const MenuBackground = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  &.menu--appear {
+    transform: scale(0);
+  }
+  &.menu--appear-active {
+    transform: scale(1);
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &.menu--enter {
+    transform: rotateY(90deg);
+  }
+  &.menu--enter-active {
+    transform: rotateY(0);
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &.menu--exit-active {
+    transform: rotateY(90deg);
+    transition: transform 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 `;
 
 const PlayerSelectButton = styled.button`

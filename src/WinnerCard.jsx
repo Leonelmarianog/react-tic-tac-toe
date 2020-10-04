@@ -11,6 +11,19 @@ const CardBackground = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+
+  &.winnerCard--enter {
+    transform: rotateY(90deg);
+  }
+  &.winnerCard--enter-active {
+    transform: rotateY(0);
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &.winnerCard--exit-active {
+    transform: rotateY(90deg);
+    transition: transform 0.7s 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 `;
 
 const StyledSpan = styled.span`
