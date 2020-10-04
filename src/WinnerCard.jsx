@@ -24,10 +24,11 @@ const StyledButton = styled.button`
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
-  cursor: pointer;
   font-size: 20px;
+  cursor: pointer;
+  pointer-events: ${(props) => (props.isDisabled ? "none" : "auto")};
   transition: background-color 0.5s, transform 0.5s;
-  animation: ${(props) => (props.animate ? "bounce 0.3s linear 0s 1" : "")};
+  animation: ${(props) => (props.isAnimated ? "bounce 0.3s linear 0s 1" : "")};
 
   &:hover {
     background-color: ${(props) =>
@@ -45,8 +46,8 @@ const WinnerCard = ({ winner, handleRestartGame, winnerCard }) => (
     <StyledButton
       winner={winner}
       onClick={() => handleRestartGame()}
-      className={!winnerCard ? "click-disabled" : ""}
-      animate={!winnerCard}
+      isDisabled={!winnerCard}
+      isAnimated={!winnerCard}
     >
       Let's Go!
     </StyledButton>
