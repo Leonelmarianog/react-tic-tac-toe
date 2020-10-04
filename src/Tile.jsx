@@ -14,6 +14,8 @@ const Square = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  /* ("none" : "") because I don't want to step over the pointer-event of the parent (GameBoard) */
+  pointer-events: ${(props) => (props.isDisabled ? "none" : "")};
 
   &:hover {
     background-color: #586ffc;
@@ -21,10 +23,7 @@ const Square = styled.div`
 `;
 
 const Tile = ({ index, shape, handleSetTile }) => (
-  <Square
-    onClick={() => handleSetTile(index)}
-    className={shape ? "click-disabled" : ""}
-  >
+  <Square onClick={() => handleSetTile(index)} isDisabled={shape}>
     <CSSTransition
       in={shape === "x"}
       timeout={700}
