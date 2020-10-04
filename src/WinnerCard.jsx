@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Bounce from "./Bounce.jsx";
 
 const CardBackground = styled.div`
   height: 500px;
@@ -28,7 +29,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   pointer-events: ${(props) => (props.isDisabled ? "none" : "auto")};
   transition: background-color 0.5s, transform 0.5s;
-  animation: ${(props) => (props.isAnimated ? "bounce 0.3s linear 0s 1" : "")};
+  ${(props) => (props.isAnimated ? Bounce : "")};
 
   &:hover {
     background-color: ${(props) =>

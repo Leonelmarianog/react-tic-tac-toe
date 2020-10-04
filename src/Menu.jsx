@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import PlayerX from "./PlayerX.jsx";
+import PlayerO from "./PlayerO.jsx";
+import Bounce from "./Bounce.jsx";
 
 const MenuBackground = styled.div`
   height: 500px;
@@ -18,7 +21,7 @@ const PlayerSelectButton = styled.button`
   cursor: pointer;
   pointer-events: ${(props) => (props.isDisabled ? "none" : "auto")};
   transition: filter 0.5s, transform 0.5s;
-  animation: ${(props) => (props.isAnimated ? "bounce 0.3s linear 0s 1" : "")};
+  ${(props) => (props.isAnimated ? Bounce : "")};
 
   &:hover {
     filter: brightness(1.5);
@@ -48,18 +51,7 @@ export default class Menu extends React.Component {
           isDisabled={this.state.buttonsDisabled}
           isAnimated={this.state.bounceX}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 51.6 51.6"
-            style={{ enableBackground: "new 0 0 51.6 51.6" }}
-            xmlSpace="preserve"
-          >
-            <line className="line" x1="10.4" y1="10" x2="41.2" y2="41.6" />
-            <line className="line" x1="41.6" y1="10.4" x2="10" y2="41.2" />
-          </svg>
+          <PlayerX isButton={true} />
         </PlayerSelectButton>
         <PlayerSelectButton
           id="o"
@@ -68,17 +60,7 @@ export default class Menu extends React.Component {
           isDisabled={this.state.buttonsDisabled}
           isAnimated={this.state.bounceO}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 60 60"
-            style={{ enableBackground: "new 0 0 60 60" }}
-            xmlSpace="preserve"
-          >
-            <circle className="circle" cx="30" cy="30" r="20" />
-          </svg>
+          <PlayerO isButton={true} />
         </PlayerSelectButton>
       </MenuBackground>
     );

@@ -21,62 +21,6 @@ html, body, #root {
   align-items: center;
 }
 
-.button-x, .button-o {
-  width: 20%;
-  transition: filter 0.5s, transform 0.5s;
-  cursor: pointer;
-  animation: clicked 0.5s;
-}
-
-.button-x:hover, .button-o:hover {
-  filter: brightness(1.5);
-  transform: scale(1.2);
-}
-
-.bounce {
-  animation: bounce 0.3s;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(1.2);
-  }
-
-  50% {
-    transform: scale(0.7);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.click-disabled {
-  pointer-events: none;
-}
-
-.shape-x, .shape-o {
-  width: 50%;
-}
-
-.line {
-  fill: none;
-  stroke: #f05483;
-  stroke-width: 20;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 45;
-}
-
-.circle {
-  fill: none;
-  stroke: #FBA919;
-  stroke-width: 20;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 126;
-  stroke-linecap: round;
-}
-
 .menu--appear {
   transform: scale(0);
 }
