@@ -139,7 +139,7 @@ export default class App extends React.Component {
         </CSSTransition>
         <CSSTransition
           in={this.state.winnerCard}
-          timeout={{ enter: 700, exit: 700 }}
+          timeout={{ enter: 700, exit: 1200 }}
           classNames={"winnerCard-"}
           mountOnEnter={true}
           unmountOnExit={true}

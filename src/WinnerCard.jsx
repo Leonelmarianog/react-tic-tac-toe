@@ -26,16 +26,13 @@ const StyledButton = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   font-size: 20px;
-  transition: background-color 0.5s;
+  transition: background-color 0.5s, transform 0.5s;
+  animation: ${(props) => (props.animate ? "bounce 0.3s linear 0s 1" : "")};
 
   &:hover {
     background-color: ${(props) =>
       props.winner === "x" ? "#ffd894" : "#f57fa3"};
-  }
-
-  &:active {
-    background-color: ${(props) =>
-      props.winner === "x" ? "#fba919" : "#f05483"};
+    transform: scale(1.2);
   }
 `;
 
@@ -48,7 +45,8 @@ const WinnerCard = ({ winner, handleRestartGame, winnerCard }) => (
     <StyledButton
       winner={winner}
       onClick={() => handleRestartGame()}
-      className={winnerCard ? "" : "click-disabled"}
+      className={!winnerCard ? "click-disabled" : ""}
+      animate={!winnerCard}
     >
       Let's Go!
     </StyledButton>

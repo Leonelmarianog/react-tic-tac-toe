@@ -39,12 +39,10 @@ html, body, #root {
 
 @keyframes bounce {
   0% {
-    filter: brightness(1.5);
     transform: scale(1.2);
   }
 
   50% {
-    filter: brightness(1);
     transform: scale(0.7);
   }
 
@@ -141,7 +139,7 @@ html, body, #root {
 }
 .winnerCard--exit-active {
   transform: rotateY(90deg);
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.7s 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .winnerCard--exit-done {
 }
