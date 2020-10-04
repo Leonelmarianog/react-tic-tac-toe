@@ -21,15 +21,44 @@ html, body, #root {
   align-items: center;
 }
 
-.button-x-o {
-  width: 100px;
-  transition: filter 0.5s;
+.button-x, .button-o {
+  width: 20%;
+  transition: filter 0.5s, transform 0.5s;
   cursor: pointer;
+  animation: clicked 0.5s;
 }
 
-.button-x-o:hover {
+.button-x:hover, .button-o:hover {
   filter: brightness(1.5);
-  transition: filter 0.5s;
+  transform: scale(1.2);
+}
+
+.bounce {
+  animation: bounce 0.3s;
+}
+
+@keyframes bounce {
+  0% {
+    filter: brightness(1.5);
+    transform: scale(1.2);
+  }
+
+  50% {
+    filter: brightness(1);
+    transform: scale(0.7);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.click-disabled {
+  pointer-events: none;
+}
+
+.shape-x, .shape-o {
+  width: 50%;
 }
 
 .line {
@@ -117,39 +146,35 @@ html, body, #root {
 .winnerCard--exit-done {
 }
 
-.x--enter .line-1{ 
+.shape-x--enter .line-1{ 
   stroke-dashoffset: 45; 
 }
-.x--enter-active .line-1{ 
+.shape-x--enter-active .line-1{ 
   stroke-dashoffset: 0; 
   transition: stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1); 
 }
-.x--enter-done .line-1{
+.shape-x--enter-done .line-1{
 }
 
-.x--enter .line-2{ 
+.shape-x--enter .line-2{ 
   stroke-dashoffset: 45; 
 }
-.x--enter-active .line-2{ 
+.shape-x--enter-active .line-2{ 
   stroke-dashoffset: 0; 
   transition: stroke-dashoffset 0.35s 0.35s cubic-bezier(0.22, 1, 0.36, 1); 
 }
-.x--enter-done .line-2{
+.shape-x--enter-done .line-2{
 }
 
-.o--enter { 
+.shape-o--enter { 
   stroke-dashoffset: 126; 
 }
-.o--enter-active { 
+.shape-o--enter-active { 
   stroke-dashoffset: 0; 
   transition: stroke-dashoffset 0.7s cubic-bezier(0.85, 0, 0.15, 1); 
 }
-.o--enter-done { 
+.shape-o--enter-done { 
   stroke-dashoffset: 0; 
-}
-
-.shape-x-o {
-  width: 50%;
 }
 `;
 

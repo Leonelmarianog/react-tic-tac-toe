@@ -70,7 +70,6 @@ export default class App extends React.Component {
   }
 
   checkRows(tiles, player) {
-    console.log(tiles, player);
     for (let i = 0; i < 7; i += 3) {
       if (
         tiles[i] === tiles[i + 1] &&
@@ -135,6 +134,7 @@ export default class App extends React.Component {
           <GameBoard
             tiles={this.state.tiles}
             handleSetTile={this.handleSetTile}
+            winner={this.state.winner}
           />
         </CSSTransition>
         <CSSTransition
@@ -148,6 +148,7 @@ export default class App extends React.Component {
           <WinnerCard
             winner={this.state.winner}
             handleRestartGame={this.handleRestartGame}
+            winnerCard={this.state.winnerCard}
           />
         </CSSTransition>
       </React.Fragment>

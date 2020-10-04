@@ -5,25 +5,30 @@ import PlayerX from "./PlayerX.jsx";
 import PlayerO from "./PlayerO.jsx";
 
 const Square = styled.div`
-  width: 32%;
-  height: 32%;
-  background: #304cff;
+  width: 33%;
+  height: 33%;
+  background-color: #304cff;
+  border: 5px solid #4760ff;
+  transition: background-color 0.5s;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
   &:hover {
-    filter: brightness(1.5);
+    background-color: #586ffc;
   }
 `;
 
 const Tile = ({ index, shape, handleSetTile }) => (
-  <Square onClick={() => handleSetTile(index)}>
+  <Square
+    onClick={() => handleSetTile(index)}
+    className={shape ? "click-disabled" : ""}
+  >
     <CSSTransition
       in={shape === "x"}
       timeout={700}
-      classNames={"x-"}
+      classNames={"shape-x-"}
       mountOnEnter={true}
     >
       <PlayerX />
@@ -31,7 +36,7 @@ const Tile = ({ index, shape, handleSetTile }) => (
     <CSSTransition
       in={shape === "o"}
       timeout={700}
-      classNames={"o-"}
+      classNames={"shape-o-"}
       mountOnEnter={true}
     >
       <PlayerO />

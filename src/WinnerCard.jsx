@@ -39,13 +39,17 @@ const StyledButton = styled.button`
   }
 `;
 
-const WinnerCard = ({ winner, handleRestartGame }) => (
+const WinnerCard = ({ winner, handleRestartGame, winnerCard }) => (
   <CardBackground>
     <h1>
       Player <StyledSpan winner={winner}>{winner}</StyledSpan> Won!
     </h1>
     <h2>Want to play again?</h2>
-    <StyledButton winner={winner} onClick={() => handleRestartGame()}>
+    <StyledButton
+      winner={winner}
+      onClick={() => handleRestartGame()}
+      className={winnerCard ? "" : "click-disabled"}
+    >
       Let's Go!
     </StyledButton>
   </CardBackground>

@@ -7,6 +7,8 @@ const BoardBackground = styled.div`
   width: 500px;
   background: #4760ff;
   border-radius: 20px;
+  border: 5px solid #4760ff;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -29,9 +31,9 @@ const BoardBackground = styled.div`
   }
 `;
 
-const GameBoard = ({ tiles, handleSetTile }) => {
+const GameBoard = ({ tiles, handleSetTile, winner }) => {
   return (
-    <BoardBackground>
+    <BoardBackground className={winner ? "click-disabled" : ""}>
       {tiles.map((tile, index) => (
         <Tile
           key={`tile-${index + 1}`}
