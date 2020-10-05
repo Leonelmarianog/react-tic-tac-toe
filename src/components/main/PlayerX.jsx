@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import StyledSVG from "./SVG.jsx";
+import SVG from "./SVG.jsx";
 
 const Line = styled.line`
   fill: none;
@@ -13,7 +13,7 @@ const Line = styled.line`
 `;
 
 const PlayerX = ({ isButton }) => (
-  <StyledSVG
+  <SVG
     isButton={isButton}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -24,7 +24,7 @@ const PlayerX = ({ isButton }) => (
   >
     <Line className="line-1" x1="10.4" y1="10" x2="41.2" y2="41.6" />
     <Line className="line-2" x1="41.6" y1="10.4" x2="10" y2="41.2" />
-  </StyledSVG>
+  </SVG>
 );
 
 PlayerX.propTypes = {

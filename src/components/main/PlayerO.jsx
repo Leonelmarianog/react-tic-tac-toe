@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import StyledSVG from "./SVG.jsx";
+import SVG from "./SVG.jsx";
 
 const Circle = styled.circle`
   fill: none;
@@ -13,7 +13,7 @@ const Circle = styled.circle`
 `;
 
 const PlayerO = ({ isButton }) => (
-  <StyledSVG
+  <SVG
     isButton={isButton}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -23,7 +23,7 @@ const PlayerO = ({ isButton }) => (
     xmlSpace="preserve"
   >
     <Circle cx="30" cy="30" r="20" />
-  </StyledSVG>
+  </SVG>
 );
 
 PlayerO.propTypes = {
