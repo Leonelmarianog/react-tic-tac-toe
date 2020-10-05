@@ -30,7 +30,7 @@ export default class App extends React.Component {
       if (newWinner) {
         this.setState({
           gameBoard: false,
-          turn: 0, // breaks an infinite loop
+          turn: 0, // reset this here to break infinite loops
           winner: newWinner,
         });
       } else if (turn === 9 && !winner) {
