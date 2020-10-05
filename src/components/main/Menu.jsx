@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import PlayerX from "./PlayerX.jsx";
 import PlayerO from "./PlayerO.jsx";
-import Bounce from "./Bounce.jsx";
+import Bounce from "../styling/Bounce.jsx";
 
 const MenuBackground = styled.div`
   height: 500px;

@@ -1,6 +1,6 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import GlobalStyles from "./GlobalStyles.jsx";
+import GlobalStyles from "../styling/GlobalStyles.jsx";
 import Menu from "./Menu.jsx";
 import GameBoard from "./GameBoard.jsx";
 import WinnerCard from "./WinnerCard.jsx";

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Bounce from "./Bounce.jsx";
+import Bounce from "../styling/Bounce.jsx";
 
 const CardBackground = styled.div`
   height: 500px;

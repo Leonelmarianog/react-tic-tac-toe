@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import StyledSVG from "./SVG";
+import StyledSVG from "./SVG.jsx";
 
 const Circle = styled.circle`
   fill: none;
