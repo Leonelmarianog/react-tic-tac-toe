@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CSSTransition } from "react-transition-group";
+import PropTypes from "prop-types";
 import PlayerX from "./PlayerX.jsx";
 import PlayerO from "./PlayerO.jsx";
 
@@ -22,6 +23,10 @@ const Square = styled.div`
   }
 `;
 
+Square.propTypes = {
+  isDisabled: PropTypes.oneOf(["", "x", "o"]),
+};
+
 const Tile = ({ index, shape, handleSetTile }) => (
   <Square onClick={() => handleSetTile(index)} isDisabled={shape}>
     <CSSTransition
@@ -42,5 +47,11 @@ const Tile = ({ index, shape, handleSetTile }) => (
     </CSSTransition>
   </Square>
 );
+
+Tile.propTypes = {
+  index: PropTypes.number,
+  shape: PropTypes.oneOf(["", "x", "o"]),
+  handleSetTile: PropTypes.func,
+};
 
 export default Tile;

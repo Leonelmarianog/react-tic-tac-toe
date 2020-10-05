@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import StyledSVG from "./SVG";
 
 const Line = styled.line`
@@ -25,5 +26,9 @@ const PlayerX = ({ isButton }) => (
     <Line className="line-2" x1="41.6" y1="10.4" x2="10" y2="41.2" />
   </StyledSVG>
 );
+
+PlayerX.propTypes = {
+  isButton: PropTypes.bool,
+};
 
 export default PlayerX;

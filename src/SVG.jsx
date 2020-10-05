@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const SVG = styled.svg`
   width: ${(props) => (props.isButton ? "auto" : "50%")};
@@ -26,5 +27,9 @@ const SVG = styled.svg`
     transition: stroke-dashoffset 0.35s 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 `;
+
+SVG.propTypes = {
+  isButton: PropTypes.bool,
+};
 
 export default SVG;

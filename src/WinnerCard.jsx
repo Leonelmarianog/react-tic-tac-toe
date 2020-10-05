@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import Bounce from "./Bounce.jsx";
 
 const CardBackground = styled.div`
@@ -32,6 +33,10 @@ const StyledSpan = styled.span`
   font-size: 40px;
 `;
 
+StyledSpan.propTypes = {
+  winner: PropTypes.oneOf([null, "x", "o"]),
+};
+
 const StyledButton = styled.button`
   background-color: ${(props) =>
     props.winner === "x" ? "#fba919" : "#f05483"};
@@ -50,6 +55,12 @@ const StyledButton = styled.button`
     transform: scale(1.2);
   }
 `;
+
+StyledSpan.propTypes = {
+  winner: PropTypes.oneOf([null, "x", "o"]),
+  isDisabled: PropTypes.bool,
+  isAnimated: PropTypes.bool,
+};
 
 const WinnerCard = ({ winner, isADraw, handleRestartGame, winnerCard }) => {
   const message = isADraw ? (
@@ -73,6 +84,13 @@ const WinnerCard = ({ winner, isADraw, handleRestartGame, winnerCard }) => {
       </StyledButton>
     </CardBackground>
   );
+};
+
+WinnerCard.propTypes = {
+  winner: PropTypes.oneOf([null, "x", "o"]),
+  isDraw: PropTypes.bool,
+  handleRestartGame: PropTypes.func,
+  winnerCard: PropTypes.bool,
 };
 
 export default WinnerCard;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import PlayerX from "./PlayerX.jsx";
 import PlayerO from "./PlayerO.jsx";
 import Bounce from "./Bounce.jsx";
@@ -50,6 +51,11 @@ const PlayerSelectButton = styled.button`
   }
 `;
 
+PlayerSelectButton.propTypes = {
+  isDisabled: PropTypes.oneOf([0, 1]),
+  isAnimated: PropTypes.oneOf([0, 1]),
+};
+
 export default class Menu extends React.Component {
   constructor() {
     super();
@@ -88,3 +94,7 @@ export default class Menu extends React.Component {
     );
   }
 }
+
+Menu.propTypes = {
+  handleMenuSelection: PropTypes.func,
+};

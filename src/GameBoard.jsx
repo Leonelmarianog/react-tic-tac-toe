@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import Tile from "./Tile.jsx";
 
 const BoardBackground = styled.div`
@@ -45,6 +46,10 @@ const BoardBackground = styled.div`
   }
 `;
 
+BoardBackground.propTypes = {
+  isDisabled: PropTypes.oneOf([null, "x", "o"]),
+};
+
 const GameBoard = ({ tiles, handleSetTile, winner }) => {
   return (
     <BoardBackground isDisabled={winner}>
@@ -58,6 +63,12 @@ const GameBoard = ({ tiles, handleSetTile, winner }) => {
       ))}
     </BoardBackground>
   );
+};
+
+GameBoard.propTypes = {
+  tiles: PropTypes.array,
+  handleSetTile: PropTypes.func,
+  winner: PropTypes.oneOf([null, "x", "o"]),
 };
 
 export default GameBoard;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import StyledSVG from "./SVG";
 
 const Circle = styled.circle`
@@ -24,5 +25,9 @@ const PlayerO = ({ isButton }) => (
     <Circle cx="30" cy="30" r="20" />
   </StyledSVG>
 );
+
+PlayerO.propTypes = {
+  isButton: PropTypes.bool,
+};
 
 export default PlayerO;
