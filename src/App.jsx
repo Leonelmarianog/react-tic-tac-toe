@@ -12,6 +12,7 @@ export default class App extends React.Component {
       menu: true,
       gameBoard: false,
       currentPlayer: null,
+      turn: 0,
       tiles: ["", "", "", "", "", "", "", "", ""],
       winner: null,
       winnerCard: false,
@@ -21,21 +22,36 @@ export default class App extends React.Component {
     this.handleRestartGame = this.handleRestartGame.bind(this);
   }
 
+  componentDidUpdate() {
+    const { tiles, turn } = this.state;
+    if (turn > 4) {
+      const winner = this.checkWinner(tiles);
+      if (winner) {
+        this.setState({
+          winner,
+          turn: 0,
+          gameBoard: false,
+        });
+      }
+    }
+  }
+
   handleSelection(player) {
     this.setState({ menu: !this.state.menu, currentPlayer: player });
   }
 
   handleSetTile(index) {
-    if (this.state.tiles[index] !== "") {
-      return;
+    if (this.state.tiles[index] === "") {
+      const { currentPlayer, turn } = this.state;
+      const newTiles = [...this.state.tiles];
+      newTiles[index] = currentPlayer;
+
+      this.setState({
+        tiles: newTiles,
+        currentPlayer: currentPlayer === "x" ? "o" : "x",
+        turn: turn + 1,
+      });
     }
-    const newTiles = [...this.state.tiles];
-    newTiles[index] = this.state.currentPlayer;
-    this.checkWinner(newTiles, this.state.currentPlayer);
-    this.setState({
-      tiles: newTiles,
-      currentPlayer: this.state.currentPlayer === "x" ? "o" : "x",
-    });
   }
 
   handleRestartGame() {
@@ -47,62 +63,26 @@ export default class App extends React.Component {
     });
   }
 
-  checkWinner(tiles, player) {
-    if (this.checkBoard(tiles, player)) {
-      this.setState({
-        winner: player,
-        gameBoard: false,
-      });
-    }
-  }
+  checkWinner(tiles) {
+    const winningPositions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
 
-  checkBoard(tiles, player) {
-    if (this.checkRows(tiles, player)) {
-      return true;
-    }
-    if (this.checkColumns(tiles, player)) {
-      return true;
-    }
-    if (this.checkDiagonals(tiles, player)) {
-      return true;
-    }
-    return false;
-  }
-
-  checkRows(tiles, player) {
-    for (let i = 0; i < 7; i += 3) {
-      if (
-        tiles[i] === tiles[i + 1] &&
-        tiles[i] === tiles[i + 2] &&
-        tiles[i] === player
-      ) {
-        return true;
+    for (let i = 0; i < winningPositions.length; i++) {
+      const [a, b, c] = winningPositions[i];
+      if (tiles[a] && tiles[a] === tiles[b] && tiles[a] === tiles[c]) {
+        return tiles[a];
       }
     }
-    return false;
-  }
 
-  checkColumns(tiles, player) {
-    for (let i = 0; i < 3; i++) {
-      if (
-        tiles[i] === tiles[i + 3] &&
-        tiles[i] === tiles[i + 6] &&
-        tiles[i] === player
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  checkDiagonals(tiles, player) {
-    if (tiles[0] === tiles[4] && tiles[0] === tiles[8] && tiles[0] === player) {
-      return true;
-    }
-    if (tiles[2] === tiles[4] && tiles[2] === tiles[6] && tiles[2] === player) {
-      return true;
-    }
-    return false;
+    return null;
   }
 
   render() {
