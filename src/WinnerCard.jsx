@@ -51,21 +51,28 @@ const StyledButton = styled.button`
   }
 `;
 
-const WinnerCard = ({ winner, handleRestartGame, winnerCard }) => (
-  <CardBackground>
+const WinnerCard = ({ winner, isADraw, handleRestartGame, winnerCard }) => {
+  const message = isADraw ? (
+    <h1>Draw!</h1>
+  ) : (
     <h1>
       Player <StyledSpan winner={winner}>{winner}</StyledSpan> Won!
     </h1>
-    <h2>Want to play again?</h2>
-    <StyledButton
-      winner={winner}
-      onClick={() => handleRestartGame()}
-      isDisabled={!winnerCard}
-      isAnimated={!winnerCard}
-    >
-      Let's Go!
-    </StyledButton>
-  </CardBackground>
-);
+  );
+  return (
+    <CardBackground>
+      {message}
+      <h2>Want to play again?</h2>
+      <StyledButton
+        winner={winner}
+        onClick={() => handleRestartGame()}
+        isDisabled={!winnerCard}
+        isAnimated={!winnerCard}
+      >
+        Let's Go!
+      </StyledButton>
+    </CardBackground>
+  );
+};
 
 export default WinnerCard;

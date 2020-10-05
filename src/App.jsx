@@ -15,6 +15,7 @@ export default class App extends React.Component {
       turn: 0,
       tiles: ["", "", "", "", "", "", "", "", ""],
       winner: null,
+      isADraw: false,
       winnerCard: false,
     };
     this.handleSelection = this.handleSelection.bind(this);
@@ -23,21 +24,31 @@ export default class App extends React.Component {
   }
 
   componentDidUpdate() {
-    const { tiles, turn } = this.state;
-    if (turn > 4) {
-      const winner = this.checkWinner(tiles);
-      if (winner) {
+    const { tiles, turn, winner } = this.state;
+    if (turn > 5 && turn < 10) {
+      const newWinner = this.checkWinner(tiles);
+      if (newWinner) {
         this.setState({
-          winner,
+          winner: newWinner,
           turn: 0,
           gameBoard: false,
         });
       }
+    } else if (turn > 9 && !winner) {
+      this.setState({
+        isADraw: true,
+        turn: 0,
+        gameBoard: false,
+      });
     }
   }
 
   handleSelection(player) {
-    this.setState({ menu: !this.state.menu, currentPlayer: player });
+    this.setState({
+      menu: !this.state.menu,
+      currentPlayer: player,
+      turn: this.state.turn + 1,
+    });
   }
 
   handleSetTile(index) {
@@ -86,7 +97,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { menu, gameBoard, tiles, winner, winnerCard } = this.state;
+    const { menu, gameBoard, tiles, winner, winnerCard, isADraw } = this.state;
     return (
       <React.Fragment>
         <GlobalStyles />
@@ -124,10 +135,13 @@ export default class App extends React.Component {
           classNames={"winnerCard-"}
           mountOnEnter={true}
           unmountOnExit={true}
-          onExited={() => this.setState({ menu: true, winner: null })}
+          onExited={() =>
+            this.setState({ menu: true, winner: null, isADraw: false })
+          }
         >
           <WinnerCard
             winner={winner}
+            isADraw={isADraw}
             handleRestartGame={this.handleRestartGame}
             winnerCard={winnerCard}
           />
