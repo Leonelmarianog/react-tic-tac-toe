@@ -25,7 +25,7 @@ export default class App extends React.Component {
 
   componentDidUpdate() {
     const { tiles, turn, winner } = this.state;
-    if (turn > 5 && turn < 10) {
+    if (turn > 4) {
       const newWinner = this.checkWinner(tiles);
       if (newWinner) {
         this.setState({
@@ -33,22 +33,21 @@ export default class App extends React.Component {
           turn: 0, // breaks an infinite loop
           winner: newWinner,
         });
+      } else if (turn === 9 && !winner) {
+        this.setState({
+          gameBoard: false,
+          turn: 0,
+          isADraw: true,
+        });
       }
-    } else if (turn > 9 && !winner) {
-      this.setState({
-        gameBoard: false,
-        turn: 0,
-        isADraw: true,
-      });
     }
   }
 
   handleMenuSelection(player) {
-    const { menu, turn } = this.state;
+    const { menu } = this.state;
     this.setState({
       menu: !menu,
       currentPlayer: player,
-      turn: turn + 1,
     });
   }
 
