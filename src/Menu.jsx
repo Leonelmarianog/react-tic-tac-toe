@@ -59,7 +59,7 @@ export default class Menu extends React.Component {
 
   handleClick(event) {
     const { id: selectedPlayer } = event.currentTarget;
-    this.props.handleSelection(selectedPlayer);
+    this.props.handleMenuSelection(selectedPlayer);
   }
 
   render() {

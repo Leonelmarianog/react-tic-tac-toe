@@ -11,14 +11,14 @@ export default class App extends React.Component {
     this.state = {
       menu: true,
       gameBoard: false,
+      winnerCard: false,
       currentPlayer: null,
-      turn: 0,
       tiles: ["", "", "", "", "", "", "", "", ""],
+      turn: 0,
       winner: null,
       isADraw: false,
-      winnerCard: false,
     };
-    this.handleSelection = this.handleSelection.bind(this);
+    this.handleMenuSelection = this.handleMenuSelection.bind(this);
     this.handleSetTile = this.handleSetTile.bind(this);
     this.handleRestartGame = this.handleRestartGame.bind(this);
   }
@@ -29,25 +29,26 @@ export default class App extends React.Component {
       const newWinner = this.checkWinner(tiles);
       if (newWinner) {
         this.setState({
-          winner: newWinner,
-          turn: 0,
           gameBoard: false,
+          turn: 0, // breaks an infinite loop
+          winner: newWinner,
         });
       }
     } else if (turn > 9 && !winner) {
       this.setState({
-        isADraw: true,
-        turn: 0,
         gameBoard: false,
+        turn: 0,
+        isADraw: true,
       });
     }
   }
 
-  handleSelection(player) {
+  handleMenuSelection(player) {
+    const { menu, turn } = this.state;
     this.setState({
-      menu: !this.state.menu,
+      menu: !menu,
       currentPlayer: player,
-      turn: this.state.turn + 1,
+      turn: turn + 1,
     });
   }
 
@@ -56,7 +57,6 @@ export default class App extends React.Component {
       const { currentPlayer, turn } = this.state;
       const newTiles = [...this.state.tiles];
       newTiles[index] = currentPlayer;
-
       this.setState({
         tiles: newTiles,
         currentPlayer: currentPlayer === "x" ? "o" : "x",
@@ -113,7 +113,7 @@ export default class App extends React.Component {
           appear={true}
           onExited={() => this.setState({ gameBoard: true })}
         >
-          <Menu handleSelection={this.handleSelection} />
+          <Menu handleMenuSelection={this.handleMenuSelection} />
         </CSSTransition>
         <CSSTransition
           in={gameBoard}
