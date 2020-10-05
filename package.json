@@ -1,6 +1,7 @@
 {
   "name": "react-tic-tac-toe",
   "description": "An animated tic-tac-toe made in React with React-Transition-Group",
+  "homepage": "http://leonelmarianog.github.io/react-tic-tac-toe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
